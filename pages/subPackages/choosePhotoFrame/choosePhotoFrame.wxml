@@ -1,0 +1,36 @@
+<!--pages/choosePhotoFrame/choosePhotoFrame.wxml-->
+<view class="container">
+  <image-cropper id="image-cropper" class="photoBack" 
+  disable_ratio="{{true}}" 
+  disable_rotate="{{false}}"
+  disable_width="{{true}}" 
+  disable_height="{{true}}" 
+  limit_move="{{false}}" 
+  width="{{270}}" 
+  height="{{480}}" 
+
+  imgSrc="{{src}}" 
+  cut_top="{{cut_top}}"
+  _img_top="{{_image_top}}"
+  frameHeight="{{frameHeight}}"
+  frameUrl="{{frameUrl}}"
+   bindload="cropperload" 
+   bindimageload="loadimage" ></image-cropper>
+  <view class="chooseContainer">
+    <view class="btns">
+      <view bindtap="backHome" class="btnClose">
+        <image src="./images/close.png"></image>
+      </view>
+      <view bindtap="synthesis" class="btnRight">
+        <image src="./images/right.png"></image>
+      </view>
+    </view>
+    <scroll-view class="photoFrames" scroll-x>
+      <block wx:for="{{frameArray}}" wx:for-item="item" wx:key="index">
+        <view class="photoFrame {{item.choose?'choose':''}}" id="frame" data-id="{{index}}" bindtap="chooseFrame">
+          <image src="{{item.src}}"></image>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

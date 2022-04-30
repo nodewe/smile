@@ -1,0 +1,72 @@
+/* pages/choosePhotoFrame/choosePhotoFrame.wxss */
+.container .photoBack{
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.container .photoFrameImage{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.container .chooseContainer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 750rpx;
+	height: 338rpx;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 15rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 10;
+}
+.container .chooseContainer .btns{
+  /* height: 84rpx; */
+  border-bottom: 2rpx solid #eeeeee;
+  padding: 0rpx 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chooseContainer .btns image{
+  width: 100%;
+  height: 100%;
+}
+.chooseContainer .btns .btnClose{
+  padding:25rpx;
+  height: 30rpx;
+  width: 30rpx;
+}
+.chooseContainer .btns .btnRight{
+  padding:25rpx;
+  height: 30rpx;
+  width: 44rpx;
+}
+.container .chooseContainer .photoFrames{
+  height:252rpx;
+  padding: 31rpx 0rpx 29rpx 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.chooseContainer .photoFrames .photoFrame{
+  width: 126rpx;
+  height: 185rpx;
+  margin-right: 23rpx;
+  display: inline-block;
+  white-space: nowrap;
+  border:2rpx solid #ddd;
+}
+.photoFrames .photoFrame.choose{
+  border: solid 3rpx #0090ff;
+}
+.photoFrames .photoFrame image{
+  width: 100%;
+  height: 100%;
+}

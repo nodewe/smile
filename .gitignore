@@ -1,0 +1,10 @@
+# gitignore template for Vue.js projects
+#
+# Recommended template: Node.gitignore
+
+# TODO: where does this rule come from?
+.svn
+
+# TODO: where does this rule come from?
+node_modules/
+miniprogram_npm/

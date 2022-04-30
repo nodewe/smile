@@ -1,0 +1,68 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <view class="custom" style="height: {{statusBarHeight + titleBarHeight}}px;">
+    <view class="customText">
+      <text>校庆微笑接力</text>
+    </view>
+  </view> -->
+  <image src="./images/home.png" class="home" ></image>
+  <view class="btns">
+    <view class="join" bindtap="join">
+      <image src="./images/join.png"></image>
+      <view class="joinText">
+        <image src="./images/camera.png" class="camera"></image>
+        <text>参与接力</text>
+      </view>
+      
+    </view>
+    <view class="btnBottom">
+      <!-- <image src="./images/btnGroup.png"></image> -->
+      <view class="btnBottomText">
+        <text bindtap="showRule">活动规则</text>
+        <text bindtap="showView">查看接力</text>
+        <!-- <navigator url=""></navigator> -->
+      </view>
+    </view>
+  </view>
+  <!-- 接力规则 -->
+  <view class="descriptionModel {{isShowRule?'show':'hide'}}">
+    <view class="descriptionContent">
+      <view class="rule">
+        <image src="./images/ruleWindow.png"></image>
+        <view class="ruleContent">
+        <!-- <scroll-view scroll-y="true" class="scroll"> -->
+          <rich-text nodes="{{nodes}}"></rich-text>
+        <!-- </scroll-view> -->
+          <!-- <view class="rankingRuleContent">
+            <rich-text>所有参与接力人员分享专属页面，邀请校友参与接力活动或助力点赞、评论，根据当前照片的点赞数、评论数、浏览数、邀请数的总和进行排名，数值越高排名越靠前。</rich-text>
+          </view>
+          <view class="award">
+            <view class="awardTitle">
+              <image src="./images/triangle.png"></image>
+              <text>第1名奖励</text>
+            </view>
+            <view class="awardContent">
+              <text>专属最美校友勋章及冠军头像装饰；</text>
+            </view>
+          </view>
+          <view class="award">
+            <view class="awardTitle">
+              <image src="./images/triangle.png"></image>
+              <text>前100名奖励</text>
+            </view>
+            <view class="awardContent">
+              <text>专属排行榜TOP100的勋章；</text>
+            </view>
+          </view>
+          <view class="ruleEnd">
+            <rich-text>全站上榜奖励，自动登上TOP100的排行榜轮播展示，获得更高的曝光和人气。</rich-text>
+          </view> -->
+        </view>
+      </view>
+      <view class="close">
+        <image src="./images/close.png"  bindtap="hideRule"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 接力规则 -->
+</view>

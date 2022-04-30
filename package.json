@@ -1,0 +1,15 @@
+{
+  "name": "smp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-font-parser": "^0.3.0",
+    "set-value": "^4.1.0"
+  }
+}

@@ -1,0 +1,60 @@
+{
+    "setting": {},
+    "condition": {
+        "plugin": {
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "",
+                    "pathName": "pages/subPackages1/viewPhotos/viewPhotos",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/index/index",
+                    "query": "imageid=25",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/subPackages1/viewPhotos/viewPhotos",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/subPackages/choosePhotoFrame/choosePhotoFrame",
+                    "query": "imgSrc=http%3A%2F%2Ftmp%2FiQqvw949XTxQ1d0a0bfe5ce00be9e9a051cc20129124.png",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/subPackages/choosePhotoFrame/choosePhotoFrame",
+                    "query": "imgSrc=http%3A%2F%2Ftmp%2FOjsUqFgS9Nb85d6f968111ee59c0db54fe877eb152d5.png",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/subPackages/choosePhotoFrame/choosePhotoFrame",
+                    "query": "imgSrc=http%3A%2F%2Ftmp%2FpENXDxjgMDRCd236d9bc13f5f65c02ec9cc8c103866e.jpg",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/subPackages1/viewPhotos/viewPhotos",
+                    "query": "",
+                    "scene": null
+                }
+            ]
+        }
+    }
+}

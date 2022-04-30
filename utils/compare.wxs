@@ -1,0 +1,27 @@
+/**
+ * 判断 图按比例显示的宽度 是否大于 手机屏幕宽度
+ * 如果是就返回 居中的margin-left数值
+ * @param {String} info 传入对应的设备信息JSON数据
+ * @return {String} 返回不同情况的居中效果
+ */
+function getImageWidthCompareDevices(info) {
+    // 获取手机设备信息
+    if (info) {
+        info = JSON.parse(info);
+        //计算出按比例图片的宽度
+        var imageWidth = info.windowHeight * 1080 / 1920;
+
+        //比较 如果 图片宽大于或者等于 手机屏幕宽就返回 margin-left的居中数据
+        if (imageWidth >= info.windowWidth) {
+            var ret = (imageWidth - info.windowWidth) / 2
+            return 'margin-left:-' + ret + 'px'
+        } else {
+            //反之就是返回 居中
+            return 'margin:0 auto'
+        }
+    }
+
+}
+module.exports = {
+    compare: getImageWidthCompareDevices
+}

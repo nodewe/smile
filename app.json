@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "subPackages": [
+    {
+      "root":"pages/subPackages",
+      "pages": [
+        "choosePhotoFrame/choosePhotoFrame"
+      ]
+    },
+    {
+      "root":"pages/subPackages1",
+      "pages": [
+        "viewPhotos/viewPhotos"
+      ]
+    }
+    
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

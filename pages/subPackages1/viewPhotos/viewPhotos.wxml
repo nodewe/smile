@@ -1,0 +1,196 @@
+<wxs src="/utils/compare.wxs" module="tools"></wxs>
+<!-- pages/viewPhotos/viewPhotos.wxml -->
+<view class="container">
+  <!-- bindtransition="slide"	 -->
+  <swiper 
+  current="{{current}}" 
+  style="width:{{imageWidth}}px;{{tools.compare(systemInfo)}}"
+  bindtransition="slide"	
+  bindchange="changePic" 
+  vertical="true" 	
+  circular="{{false}}">
+    <block wx:for="{{background}}" wx:key="index">
+      <swiper-item bindtouchstart="_start"
+        catchtap="doubleClick" data-id="{{index}}">
+        <view class="swiper-item">
+          <image
+         
+           bindload="imageLoad"
+          data-index="{{index}}"
+          data-datasource="background"
+           data-imageid="{{item.imageid}}" 
+           src="{{item.imgCompose}}" class="photo"></image>
+        </view>
+        <view wx:if="{{!item.isLoaded}}" class="loading">
+              <view class="loading-center">
+                <image src="./images/loading.gif"></image>
+                <text>加载中</text>
+              </view>
+
+            </view>
+           
+      </swiper-item>
+      
+    </block>
+  </swiper>
+  <view class="btnShowWindow" style="top:{{barHeight+10}}px">
+    <view wx:if="{{!(rankon==='0')}}" class="opacityRectangle rankingList" catchtap="showRankingList">
+      <image src="./images/list.png"></image>
+      <text>排行榜</text>
+    </view>
+    <view class="opacityRectangle more" catchtap="showMore">
+      <image src="./images/handshake.png" class="leftImage"></image>
+      <text>更多接力</text>
+      <image src="./images/right.png" class="rightImage"></image>
+    </view>
+  </view>
+  <view  class="viewEye" style="top:{{eyePosition+20}}px">
+    <image src="./images/eye.png"></image>
+    <text>{{background[current].viewCount ? background[current].viewCount : 0}}</text>
+  </view>
+  <view class="btns">
+    <image hidden="{{likeon=='0'}}" src="{{background[current].isLike?'./images/like.png':'./images/likeWhite.png'}}" class="smallImage" catchtap="clickLike"></image>
+    <image hidden="{{commenton=='0'}}" src="./images/message.png" class="message"></image>
+    <image  src="./images/transpond.png" class="smallImage" catchtap="showShare"></image>
+    <image  src="./images/handshakeWhite.png" class="handshakeWhite" catchtap="goHome"></image>
+  </view>
+
+  <!-- 排行榜 -->
+  <view class="mask" hidden="{{isShowRankingList}}" bindtap="showRankingList">
+    <view class="rankingListWindow" catchtap="showList">
+    <text>排行榜</text>
+    <scroll-view class="list" scroll-y="true">
+      <block wx:for="{{listArray}}" wx:for-item="item" wx:key="index">
+        <block wx:if="{{index<3}}">
+          <view class="listItem front">
+            <view class="rankingView">
+              <image src="{{item.imgSrc}}" class="ranking"></image>
+              <view class="headPortrait">
+              <view class="img">
+                <image mode="widthFix" src="{{item.src}}"></image>
+              </view>
+                <text>#{{item.serial}}</text>
+              </view>
+            </view>
+            <text>{{item.rankSort}}</text>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="listItem">
+            <view class="rankingView">
+              <view class="rankingNum">
+                <text>{{index+1}}</text>
+              </view>
+              <view class="headPortrait">
+                <view class="img">
+                <image mode="widthFix" src="{{item.src}}"></image>
+              </view>
+                <text>#{{item.serial}}</text>
+              </view>
+            </view>
+            <text>{{item.rankSort}}</text>
+          </view>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+  </view>
+ 
+  <!-- 排行榜 -->
+  <!-- 更多接力 -->
+<view class="mask" bindtap="showMore" hidden="{{isShowMoreRelay}}">
+
+  <view class="moreRelayWindow show"  catchtap="show">
+    <view class="header" style="height:{{barHeight + 48}}px;padding-top:{{barHeight}}px">
+      <view class="inputView">
+        <input data-name="serial" maxlength="5" bindinput="searchInput" catchfocus="inputFocus" catchblur="inputBlur"/>
+        <view class="defaultView {{isShowPlaceholder?'show':'hide'}}">
+          <image src="./images/search.png"></image>
+          <text>搜索编号</text>
+        </view>
+      </view>
+        <!-- <image style="width:50rpx;height:50rpx;" mode="aspectFit" src="./images/search.png"></image> -->
+        <view catchtap="search" class="search-btn" wx:if="{{!isShowPlaceholder}}">搜索</view>
+    </view>
+    <scroll-view bindscrolltolower="limitData" class="morePhotos" scroll-y="true" style="height:{{windowHeight - (barHeight+48)}}px">
+      <view style="height:{{windowHeight - (barHeight+48)}}px;display:flex;justify-content:center;align-items:center;color:white;" wx:if="{{!photoArray.length}}">搜索无结果</view>
+      <block wx:else>
+      <view hidden="{{isShowList}}" class="row">
+      <block  wx:for="{{photoArray}}" wx:for-item="item" wx:key="index">
+        
+          <view catchtap="goDetail" data-image-id="{{item.imageid}}" class="relayPhotoView">
+            <image class="relayPhoto"
+            bindload="imageLoad" 
+            data-index="{{index}}"
+            data-imageid="{{item.imageid}}"
+            data-datasource="photoArray"
+             src="{{item.imgCompose}}"></image>
+            <view catchtap="addClickLike" data-image-id="{{item.imageid}}" data-current="{{index}}" wx:if="{{likeon!='0'}}" class="likeNumView">
+            <!-- 是否显示原图 true -->
+              <image 
+              
+              mode="widthFix" src="{{item.likeData.length?'./images/like.png':'./images/likeWhite.png'}}" class="heart" ></image>
+              <text>{{item.likeCount ? item.likeCount : 0}}</text>
+            </view>
+            <view class="shadow">
+            </view>
+            <view wx:if="{{!item.isLoaded}}" class="loading">
+              <view class="loading-center">
+                <image src="./images/loading.gif"></image>
+                <text>加载中</text>
+              </view>
+            </view>
+          </view>
+      </block>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+</view>
+  <!-- 更多接力 -->
+  <!-- 分享照片 -->
+  <view bindtap="showHide" class="shareModel {{isShowShare?'show':'hide'}}">
+    <view class="shareWindow" catchtap="showShare">
+      <view class="card">
+        <view class="sharePhoto">
+          <image style="width:100%;height:100%" src="{{background[current].imgCompose}}"></image>
+        </view>
+        <view class="publicity">
+          <view class="tagline">
+            <text>启明大学<text class="redNum">100</text>周年</text>
+            <text>校庆微笑接力活动</text>
+            <text>等你来参与！</text>
+          </view>
+          <view class="QRcode">
+            <image src="{{QRCodePath}}"></image>
+            <text>长按识别</text>
+          </view>
+        </view>
+      </view>
+      <view class="shareBtns">
+        <button class="shareBtn" plan="true" open-type="share">
+          <image src="./images/weChat.png"></image>
+          <text>分享给好友</text>
+        </button>
+        <!-- <button><text>分享给好友</text></button> -->
+        <view class="saveBtn" catchtap="saveImage">
+          <text>保存图片</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 分享照片 -->
+  <!-- 双击点赞 -->
+  <view class="careLike" style="top:{{top}}px;left:{{left}}px;opacity:{{opacity}};">
+    <image mode="aspectFit" src="./images/like.png"></image>
+  </view>
+  <canvas class="fixed" canvas-id="poster" style="width:{{width}}px;height:{{height}}px"></canvas>
+  <view wx:if="{{!isBottomReq}}" class="tips">
+    <view>我是有底线的</view>
+  </view>
+  <view wx:if="{{!isTopReq}}" class="tips tipsTop">
+    <view>已经到顶了</view>
+  </view>
+</view>
+
